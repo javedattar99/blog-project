@@ -1,0 +1,42 @@
+
+
+
+
+.content{
+   width: 61%;
+   float: left;
+   padding: 0 0 0 30px;
+   background: yellow;
+
+
+}
+.sidebar{
+   width: 35.2%;
+   float: right;
+   padding: 10px;
+   background: blue;
+   text: white;
+
+}
+h1 {
+   text-align: center;
+   border-bottom: 1px solid #bbb;
+   padding-bottom: 10px;
+
+}
+body{
+     background: yellow;
+}
+
+#date,#comment{
+    color: red;
+    font-size: 14px;
+    font-style : italic;
+}
+a {
+   color:red;
+}
+input [type ='text']{
+   background:blue;
+   color: white;
+}

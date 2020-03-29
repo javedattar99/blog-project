@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+
+{% extends 'blog/base.html' %}
+
+{% block title_block %}4Arc Research Blog{% endblock%}
+
+{% block content_block %}
+
+<h1>4Arc Research Blog</h1>
+{% if tag %}
+<h3>Posts Tagged with{{tag.name}}</h3>
+{% endif %}
+
+{% for post in post_list %}
+<a href = '{{post.get_absolute_url}}'><h2>{{post.title}}</h2></a>
+<p id="date">Published on {{post.publish}} By {{post.author | title}}</p>
+<p><b>Tags:</b>
+     {%for tag in post.tags.all%}
+
+
+      <a href="{% url 'post_list_by_tag_name' tag.slug %}" class="btn btn-primary"> {{tag.name}} </a>
+    {% if not forloop.last %},{% endif %}
+     {% endfor %}
+
+{{post.body| truncatewords:70|linebreaks}}
+
+{%endfor%}
+
+{% include 'blog/pagination.html' with page=post_list %}
+<!-- {% include 'blog/pagination.html' with page=page_obj %}-->
+
+
+{% endblock %}

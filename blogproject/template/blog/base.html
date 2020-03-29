@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+{% load static%}
+{% load blog_tags %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/blog.css'%}">
+
+    <title>{% block title_block %}{% endblock%}</title>
+</head>
+<body>
+<div class="content">
+
+    {% block content_block %} {% endblock %}
+</div>
+<div class="sidebar" >
+    <h2>4Arc Research Blog</h2>
+    <p>Total No. Of Blog Pubished: {% tag_count %}</p>
+    <h3>Latest Post</h3>
+    {% show_latest_post %}
+    <h3>Most Commented Post</h3>
+    {% get_most_Commented_post as most_commented_posts %}
+    <ul>
+
+        {% for post in most_commented_posts %}
+       <li> <a href = '{{post.get_absolute_url}}'>{{post.title}}</a></li>
+        {% endfor %}
+
+
+    </ul>
+</div>
+
+
+</body>
+</html>
